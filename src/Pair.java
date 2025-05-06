@@ -4,6 +4,7 @@ public class Pair <K , V>{
     private K key;
     private V value;
 
+
     public Pair(K key, V value) {
         if(key==null){
             throw new NullPointerException("key is null");
@@ -34,5 +35,8 @@ public class Pair <K , V>{
     @Override
     public int hashCode() {
         return Objects.hash(key, value);
+    }
+    public static <K, V> Pair<K, V> of(K key, V value) {
+        return new Pair<>(key, value);
     }
 }
