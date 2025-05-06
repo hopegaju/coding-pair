@@ -1,10 +1,17 @@
+import java.util.Objects;
+
 public class Pair <K , V>{
     private K key;
     private V value;
+
     public Pair(K key, V value) {
+        if(key==null){
+            throw new NullPointerException("key is null");
+        }
         this.key = key;
         this.value = value;
     }
+
     public K getKey() {
         return key;
     }
@@ -14,6 +21,18 @@ public class Pair <K , V>{
 
     @Override
     public String toString() {
-        return super.toString();
+        return "Pair [key=" + key + ", value=" + value + "]";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        Pair<?, ?> pair = (Pair<?, ?>) o;
+        return Objects.equals(key, pair.key) && Objects.equals(value, pair.value);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(key, value);
     }
 }
